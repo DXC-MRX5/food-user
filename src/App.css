@@ -1,38 +1,967 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.App{
+    background-color: #e7e7e7;
+}
+#navbar{
+    width: 100%;
+    background-color: black;
+    padding: 0.7rem 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.navbar-heading-link{
+    text-decoration: none;
+    font-family: 'Racing Sans One', cursive;
+    color: white;
+    font-size: 1.6rem;
+}
+.navbar-heading-link span{
+    color: rgb(244, 207, 53);
+}
+#recipe-Category-Cntnr{
+    color: white;
+    font-weight: 900;
+    margin : 0 0 0 -5rem;
+    display: flex;
+    gap: 2rem;
+}
+.category-dropdown-cntnr {
+    float: left;
+    overflow: hidden;
+}
+.dropdown-button{
+    margin-top: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.2rem solid transparent;
+    background-color: transparent;
+}
+.dropdown-button:hover{
+    padding-bottom: 0.5rem;
+    border-bottom: 0.2rem solid aquamarine;
+    cursor: pointer;
+}
+.dropdown-content {
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem 1rem;
+    display: none;
+    position: absolute;
+    background-color: black;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+.dropdown-links {
+    float: none;
+    color: white;
+    font-weight: 600;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.dropdown-links:hover {
+    color: aquamarine;
+}
+.category-dropdown-cntnr:hover .dropdown-content {
+    display: block;
+}
+.navbar-iconBox{
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
+}
+.navbar-icon{
+    width: 26px;
+    height: 26px;
+    color: white;
+}
+.navbar-icon:hover{
+    color: aqua;
+}
+.blur-page{
+    border: 1px solid red;
+    filter: blur(8px);
+    pointer-events: none;
+}
+#blur-navbar{
+    width: 100%;
+    background-color: black;
+    padding: 0.7rem 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    filter: blur(8px);
+    pointer-events: none;
+}
+.profileBox{
+    position: absolute;
+    top: 3em;
+    right: 0;
+    width: max-content;
+    padding: 15px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4em;
+}
+.profileBox button{
+    border: none;
+    background-color: inherit;
+    color: white;
+    font-size: 1.2em;
+    padding: 0.4em;
+    cursor: pointer;
+}
+.profileBox button:hover{
+    color: #77e2e1;
+}
+.home{
+    background-image: url('https://img.sndimg.com/food/image/upload/f_auto,c_thumb,q_55,w_1280,ar_16:9/v1/img/recipes/24/25/3/l3Fx6AnTcGOjhwYNhggo_0S9A9332.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90vh;
+}
+.LogForm{
+    position: absolute;
+    top: 5vh;
+    left: 35%;
+    width: 30%;
+    min-height: 80vh;
+    height: fit-content;
+    background-color: #fff;
+    border-radius: 12px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 30px;
+}
+.closeBtnBox{
+    width: 100%;
+    height: 60px;
+}
+.close-icon{
+    position: absolute;
+    top: 20px;
+    left: 85%;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    transition: height 0.5s;
+    transition: width 0.5s;
+    color: rgb(43, 42, 42);
+}
+.close-icon:hover{
+    width: 30px;
+    height: 30px;
+}
+.LogForm h2{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2em;
+    letter-spacing: 0.15em;
+    color: rgb(43, 42, 42);
+    text-align: center;
+}
+.alertText{
+    color: red;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}
+.formContainer{
+    margin-top: 20px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.formElement{
+    position: relative;
+    width:  100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+.formElement label{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+.formElement input{
+    width: 100%;
+    height: 45px;
+    margin-left: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    padding-left: 10px;
+    border: none;
+    background-color: rgb(235, 228, 220);
+    outline: none;
+}
+.formBtn{
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: yellow;
+    cursor: pointer;
+}
+.eyeBtn{
+    position: absolute;
+    top: 40px;
+    left: 80%;
+    z-index: 5;
+    border: none;
+    color: rgb(51, 10, 92);
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+.LogForm h3{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    color: rgb(7, 136, 211);
+}
+.icon-boxCntnr{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.icon-box{
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.icon-box:hover{
+    width: 52px;
+    height: 52px;
+}
+.iconBtn{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.iconBtn:hover{
+    width: 28px;
+    height: 28px;
+}
+.apple-box{
+    background-color: black;
+}
+.appleIcon{
+    color: #fff;
+}
+.fb-box{
+    background-color: rgb(7, 93, 190);
+}
+.fbIcon{
+    color: #fff;
+}
+.LogForm h4{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.2em;
+    font-weight: lighter;
+    color: rgb(43, 42, 42);
+}
+.signBtn{
+    border: none;
+    background-color: inherit;
+    color: rgb(4, 137, 247);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+}
+.signBtn:hover{
+    color: rgb(2, 190, 190);
+}
+.introductory-para{
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    font-size: 22px;
+    font-weight: lighter;
+}
+.check-Box{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+.check-Box p{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    text-align: start;
+    color: rgb(68, 68, 68);
+}
+.bottomSearch{
+    width: 100%;
+    height: 30vh;
+    background-color: rgb(252, 242, 216);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.bottomSearch h2{
+    font-family: 'Josefin Sans', sans-serif;
+}
+.searchBtmBar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#searchBottom{
+    width: 60%;
+    height: 50px;
+    padding-left: 5%;
+    border-radius: 50px;
+    border: 2px solid rgb(177, 145, 103);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.3em;
+}
+.bottomSearch-icon{
+    position: absolute;
+    left: 22%;
+    width: 32px;
+    height: 32px;
+}
+.bottomSearch .formBtn{
+    width: 25%;
+}
+.formBtn:hover{
+    background-color: rgb(230, 171, 44);
+}
+.footer{
+    position: relative;
+    width: 100%;
+    height: 16vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.footer-left{
+    width: 27%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+.iconBox{
+    width: 65%;
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.footer-icon{
+    color: white;
+    cursor: pointer;
+}
+.fb:hover{
+    color: rgb(0, 141, 235);
+}
+.insta:hover{
+    color: rgb(164, 75, 247);
+}
+.pin:hover{
+    color: rgb(167, 1, 92);
+}
+.twtr:hover{
+    color: rgb(13, 186, 230);
+}
+.ytb:hover{
+    color: red;
+}
+.mail:hover{
+    color: rgb(182, 149, 5);
+}
+.linkBox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.footer-links{
+    color: white;
+    text-decoration: none;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+}
+.footer-right{
+    margin-right: 3%;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+.cprghtBox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.footerBtn{
+    border: none;
+    background-color: inherit;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+}
+.cprghtBox p{
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 12px;
+}
+.bcTopBtn{
+    position: absolute;
+    left: 40%;
+    border: none;
+    background-color: inherit;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.searchBar{
+    width: 100%;
+    height: fit-content;
+    min-height: 180px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.searchBox-wrapper{
+    margin: auto;
+    width: 75%;
+    height: 55px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.searchBox{
+    width: 97%;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.searchBox input{
+    width: 70%;
+    height: 33px;
+    border: none;
+    outline: none;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.2em;
+}
+.searchBox p{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+.searchBox button{
+    border: none;
+    font-family: 'Josefin Sans', sans-serif;
+    color: rgb(68, 66, 66);
+}
+.searchBar hr{
+    height: 6px;
+    width: 95%;
+    background-color: rgb(138, 2, 86);
+}
+.searchBar-recentBox{
+    margin: auto;
+    width: 75%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+.searchBar-recentBox h3{
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+.searchedItem{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 10px;
+}
+.searchedItem p{
+    font-family: 'Josefin Sans', sans-serif;
+    color: #77E2E1;
+}
+.saveHeader{
+    position: relative;
+    width: 100%;
+    height: 4.5em;
+    background-color: black;
+}
+.saveHeader h2{
+    position: absolute;
+    top: 20px;
+    left: 44%;
+    display: inline-block;
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+    font-size: 2em;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+.searchBox-save{
+    position: absolute;
+    top: 20px;
+    left: 75%;
+    width: 6em;
+    height: fit-content;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+}
+.save-search-icon{
+    width: 22px;
+    height: 22px;
+    color: #77e2e1;
+    cursor: pointer;
+}
+.save-search-icon:hover{
+    color: white;
+}
+.searchBox-save p{
+    color: #77e2e1;
+    font-size: 20px;
+}
+.searchBox-save button{
+    border: none;
+    background-color: inherit;
+    color: #77e2e1;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+}
+.searchBox-save button:hover{
+    color: white;
+}
+.save-navBar{
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8em;
+}
+.save-navBtn{
+    border: none;
+    width: 10em;
+    height: 50px;
+    background-color: inherit;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #892074;
+    cursor: pointer;
+}
+.btnShadow{
+    box-shadow: 0px 5px #892074;
+}
+.svdCard-container{
+    margin: 20px auto;
+    width: 85%;
+    min-width: 15em;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.svdFixedCard{
+    width: 13em;
+    height: 20em;
+    background-color: white;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: flex-end;
+    margin: 0.5em;
+}
+.fixedCardContent{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.plusIcon{
+    width: 3.5em;
+    height: 3.5em;
+    color: #892074;
+}
+.fixedCardContent h3{
+    font-family: 'Josefin Sans', sans-serif;
+    color: #892074;
+    font-size: 22px;
+    text-align: center;
+}
+.discoverLink{
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:15px;
+}
+.cardLink-add{
+    font-family: 'Josefin Sans', sans-serif;
+    color: #892074;
+    text-decoration: none;
+}
+.cardLink-add:hover{
+    text-decoration: underline;
+}
+.svdFixedCard-Board{
+    margin: 0.5em;
+    width: 13em;
+    height: 20em;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signBox{
+    margin: 25px auto;
+    width: 16em;
+    height: 6em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+}
+.signBtn-save{
+    width: 11em;
+    height: 3em;
+    background-color: #77E2E1;
+    border: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.1em;
+    font-weight: 800;
+    cursor: pointer;
+}
+.signBtn-save:hover{
+    background-color: #892074;
+}
+.signBox p{
+    font-family: 'Josefin Sans', sans-serif;
+}
+.logBtn-save{
+    border: none;
+    background-color: inherit;
+    color: #892074;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+}
+.logBtn-save:hover{
+    text-decoration: underline;
+}
+.profileHeader{
+    margin-top: 1.2em;
+    width: 100%;
+    height: 12em;
+    background-image: linear-gradient(10deg,#892074 5%,#77E2E1 100%);
+}
+.userDetailsBox{
+    margin-bottom: 3em;
+    position: relative;
+    width: 100%;
+    height: max-content;
+    min-height: 9em;
+    display: flex;
+    align-items: flex-end;
+}
+.profileDp{
+    position: absolute;
+    top: -8em;
+    left: 2.3em;
+    width: 11em;
+    height: 11em;
+    background-image: url(./media/avatar.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.follow-container{
+    margin-left: 1.5em; 
+    width: max-content;
+    display: flex;
+}
+.followBox{
+    width: 7em;
+    height: 3.5em;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.nameDateBox{
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.verticalLine{
+    width: 0;
+    height: 8rem;
+    border-right: 1px dashed black;
+}
+.profileContentBox{
+    margin: 5em auto;
+    width: 85%;
+    height: max-content;
+    min-height: 60vh;
+    background-color: white;
+}
+#i-want-to-make{
+    background: linear-gradient(to right, #ff0099, #493240);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0;
+}
+#i-want-to-make-search-bar-and-text-container{
+    width: 80%;
+    background-color: white;
+    padding: 0.8rem;
+    margin-left: 10%;
+}
+#i-want-to-make-search-bar-and-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.3rem solid purple;
+}
+#i-want-to-make-search-bar-and-text h3{
+    margin-right: 10px;
+    width: max-content;
+}
+#i-want-to-make-search-bar{
+    display: flex;
+    align-items: center;
+}
+#i-want-to-make-search-bar input[type=search]{
+    width: 25em;
+    height: 2rem;
+    border: none;
+    margin-left: 0.3rem;
+    outline: none;
+    font-size: 0.9rem;
+    font-weight: 900;
+}
+#i-want-to-make-suggested{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+#i-want-to-make-suggested-container{
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#i-want-to-make-suggested-container div{
+    background-color: aquamarine;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+}
+#i-want-to-make-suggested-container div a{
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+}
+#all-categories{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#all-categories-container{
+    width: 70%;
+    padding: 3rem 0;
+    text-align: left;
+}
+#all-categories-container a{
+    text-decoration: none;
+}
+#all-categories-container a:hover{
+    border-bottom: 1px solid purple;
+}
+#all-categories-container p:first-child{
+    color: purple;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+}
+#all-categories-container h2{
+    margin-bottom: 1.5rem;
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
+    letter-spacing: 0.1rem;
+}
+#all-categories-letters span{
+    font-size: 1.5rem; 
+    font-weight: 900;   
+    cursor: pointer;
+    border-bottom: 5px solid purple;
+}
+#all-categories-letters a{
+    text-decoration: none;
+    color: gray;
+    font-size: 1.5rem; 
+    font-weight: 900; 
+    margin-left: 1rem;
+    line-height: 3rem;
+}
+#all-categories-letters a:hover{
+    color: purple;
+}
+#all-categories-letters{
+    margin-bottom: 1.5rem;
+}
+#all-catgories-quick-links-container{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+#all-catgories-quick-links-container a{
+    text-decoration: none;
+    color: purple;
+    font-weight: 900;
+}
+.recipeHeader{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 3em;
+    width: 100%;
+    height: max-content;
+}
+.recipeHeader h1{
+    width: 90%;
+    margin: auto;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.recipeHeader p{
+    width: 75%;
+    margin: auto;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.recipesContainer{
+    margin: auto;
+    width: 70%;
+    height: max-content;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+}
+.category-iconBox{
+    width: 20%;
+    margin-left: 15%;
+    margin-top: 2em;
+    height: max-content;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.category-icon{
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+.category-icon:hover{
+    color: #ff0099;
+}
+.pinIcon{
+    color: red;
+}
+.fcbIcon{
+    color: #065799;
+}
+.mlIcon{
+    color: rgb(189, 166, 39);
+}
+.recipeCard{
+    width: 80%;
+    height: max-content;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.cardText{
+    padding: 1.5em;
+    width: 75%;
+    background-color: white;
+    border-bottom: 2px solid aquamarine;
+    z-index: 20;
+}
+.cardImage{
+    width: 80%;
+    height: 45vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media only screen and (max-width:500px) {
+    .userDetailsBox{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .follow-container{
+        position: relative;
+        left: 60%;
+        flex-direction: column;
+    }
+    .nameDateBox{
+        flex-direction: column;
+        gap: 1em;
+    }
+    .verticalLine{
+        width: 100%;
+        height: 0;
+        border-bottom: 1px dashed black;
+    }
 }

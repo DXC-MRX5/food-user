@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Navbar from './components/mainComponents/Navbar'
+import Routing from './components/Routing';
+import Footer from './components/mainComponents/Footer';
 
 function App() {
+  const [blur, setBlur]=useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+    <Navbar onBlur={setBlur}/>
+    <div className={blur ? "blur-page" : "page"}>
+      <Routing onBlur={setBlur}/>
+      <Footer/>
+    </div>
     </div>
   );
 }
