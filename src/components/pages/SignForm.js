@@ -3,6 +3,7 @@ import { VscChromeClose } from 'react-icons/vsc';
 import { BiErrorCircle } from 'react-icons/bi';
 import { FcGoogle } from 'react-icons/fc';
 import { SiApple } from 'react-icons/si';
+import axios from 'axios';
 
 const SignForm = ({hideLog, hideSign, clearBlur}) => {
   const closeForm =()=>{
@@ -16,6 +17,7 @@ const SignForm = ({hideLog, hideSign, clearBlur}) => {
   const [registered, setRegistered] = useState(false);
   const [formData, setFormData] = useState({})
   const [formErrors, setFormErrors] = useState({});
+  const [agreed, setAgreed]=useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = (e) => {
       e.preventDefault();
@@ -30,18 +32,24 @@ const SignForm = ({hideLog, hideSign, clearBlur}) => {
       e.preventDefault();
       setFormErrors(validate(formData));
       setRegistered(true);
+      clearBlur(false);
   }
   useEffect(()=>{
       if(Object.keys(formErrors).length === 0 && registered){
-          // axios.post("http://localhost:8000/api/user/register", formData)
-          // .then((response)=>{
-          //     alert(response.data.message);
-          //     navigate('/login');
-          // })
-          // .catch((error)=>console.log(error.message))
-          console.log(formData);
+          axios.post("https://food-server-e6lk.onrender.com/api/user/register", formData)
+          .then((response)=>{
+              alert(response.data.message);
+              const receivedToken = response.data.token;
+              const receivedName = response.data.userName;
+              if(receivedName && receivedToken){
+                sessionStorage.setItem('token', receivedToken);
+                sessionStorage.setItem('name', receivedName);
+              }
+              return hideSign(false);
+          })
+          .catch((error)=>console.log(error.message))
       }
-  })
+  },[formData, formErrors, registered, hideSign])
   const mailformat = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
   const validate = (data)=>{
       const errors = {};
@@ -79,9 +87,9 @@ const SignForm = ({hideLog, hideSign, clearBlur}) => {
         </div>
         {formErrors.password && <p className='alertText'><BiErrorCircle/>{formErrors.password}</p>}
         <div className='check-Box'>
-        <input type='checkbox' id='agreement'/><p>I agree to the Visitor Agreement and have read the Privacy Notice. I understand Discovery and its affiliates may use my email address to send updates, ads, and offers. Learn more here.</p>
+        <input type='checkbox' id='agreement' onChange={()=>setAgreed(!agreed)}/><p>I agree to the Visitor Agreement and have read the Privacy Notice. I understand Discovery and its affiliates may use my email address to send updates, ads, and offers. Learn more here.</p>
         </div>
-        {(Object.keys(formErrors).length === 0) ? <button className='formBtn' onClick={handleSubmit}>CREATE ACCOUNT</button> : <button style={{pointerEvents:'none', opacity:'50%'}} className='formBtn' onClick={handleSubmit}>CREATE ACCOUNT</button>}
+        {(agreed && (Object.keys(formErrors).length === 0)) ? <button className='formBtn' onClick={handleSubmit}>CREATE ACCOUNT</button> : <button style={{pointerEvents:'none', opacity:'50%'}} className='formBtn' onClick={handleSubmit}>CREATE ACCOUNT</button>}
       </form>
       <h3 style={{color:'black'}}>OR CONTINUE WITH</h3>
       <div className='icon-boxCntnr' style={{justifyContent:'center', gap:'20px'}}>

@@ -30,11 +30,6 @@ const SavedBoards = () => {
         </div>
       </div>
     </div>
-    {/* {isLogged ? null : <><hr style={{width:'85%', margin:'auto', backgroundColor:'black', height:'2px'}}/>
-    <div className='signBox'>
-      <button className='signBtn-save' onClick={handleSign}>SIGN UP</button>
-      <p>Already a member? <button className='logBtn-save'>Log In</button></p>
-    </div></>} */}
   </div>
   )
 }

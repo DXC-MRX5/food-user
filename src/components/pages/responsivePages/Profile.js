@@ -2,6 +2,7 @@ import React from 'react'
 import { PiUserThin } from 'react-icons/pi';
 
 const Profile = () => {
+  const name = sessionStorage.getItem('name');
   return (
   <>
     <div className='profileHeader'></div>
@@ -18,7 +19,7 @@ const Profile = () => {
         </div>
       </div>
       <div className='nameDateBox'>
-        <h4>@UserName</h4>
+        <h4>@{name}</h4>
         <div className='verticalLine'></div>
         <h4><PiUserThin/> Joined 07/2023</h4>
       </div>
@@ -32,4 +33,3 @@ const Profile = () => {
 }
 
 export default Profile
-// sessionStorage.setItem('token', 'sjahfih2341j43jr')

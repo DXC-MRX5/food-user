@@ -1,10 +1,15 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { BsFillPlusCircleFill } from 'react-icons/bs'
 import { Link, useNavigate } from 'react-router-dom'
+import SimpleBackdrop from '../../mainComponents/Backdrop'
 
-const SavedRecipes = () => {
+const SavedRecipes = ({ recipe }) => {
   const navigate = useNavigate();
+  const [RECIPE, setRECIPE] = useState([])
+  useEffect(() => {
+    setRECIPE(recipe)
+  }, [recipe])
   return (
     <div style={{width:'100%',minHeight:'80vh'}}>
     <div className='saveHeader'>
@@ -23,7 +28,7 @@ const SavedRecipes = () => {
     <div className='svdCard-container'>
       <div className='svdFixedCard'>
         <div className='fixedCardContent'>
-          <Link className='discoverLink'>
+          <Link className='discoverLink' to='/'>
           <BsFillPlusCircleFill className='plusIcon'/>
           <h3>DISCOVER RECIPES</h3>
           <p>----- or -----</p>
@@ -31,6 +36,16 @@ const SavedRecipes = () => {
           <Link className='cardLink-add'>Add Your Own Recipe</Link>
         </div>
       </div>
+      {RECIPE ? RECIPE.map((item, index)=>{
+        return(
+          <div className='svdDynamicCard'>
+            <div className='dynamicCardContent'>
+              <Link to={`/display/${item.recipe.label}`}><img src={item.recipe.image} alt=''/></Link>
+              <h3>{item.recipe.label}</h3>
+            </div>
+          </div>
+        )
+      }):<SimpleBackdrop/>}
     </div>
     </div>
   )

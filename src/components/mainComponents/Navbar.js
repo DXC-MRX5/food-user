@@ -25,7 +25,7 @@ const Navbar = ({onBlur}) => {
         navigate('/profile');
     }
     return (
-        <>
+        <div id="navBar">
         {login ? <LogForm hideLog={setLogin} showSign={setSignup} clearBlur={onBlur}/>:null}
         {signup ? <SignForm hideLog={setLogin} hideSign={setSignup} clearBlur={onBlur}/>:null}
             <div id={(login || signup) ? "blur-navbar" : "navbar"}>
@@ -130,13 +130,18 @@ const Navbar = ({onBlur}) => {
                             <button onClick={handleProfile}>Profile</button>
                             <button>Add a Recipe</button>
                             <button>User Settings</button>
-                            <button>Log Out</button>
+                            <button onClick={()=>{
+                                sessionStorage.clear();
+                                alert('logged out successfully!')
+                                setShowProfile(!showProfile);
+                                return navigate('/')
+                            }}>Log Out</button>
                         </div>
                         :
                         null}
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

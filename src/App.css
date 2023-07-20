@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
 *{
     margin: 0;
@@ -10,6 +12,9 @@
 .App{
     background-color: #e7e7e7;
 }
+
+/* Nav Bar */
+
 #navbar{
     width: 100%;
     background-color: black;
@@ -114,6 +119,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.4em;
+    z-index: 4;
 }
 .profileBox button{
     border: none;
@@ -126,12 +132,9 @@
 .profileBox button:hover{
     color: #77e2e1;
 }
-.home{
-    background-image: url('https://img.sndimg.com/food/image/upload/f_auto,c_thumb,q_55,w_1280,ar_16:9/v1/img/recipes/24/25/3/l3Fx6AnTcGOjhwYNhggo_0S9A9332.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 90vh;
-}
+
+/* Log Form */
+
 .LogForm{
     position: absolute;
     top: 5vh;
@@ -285,6 +288,9 @@
     font-weight: lighter;
     color: rgb(43, 42, 42);
 }
+
+/* Sign Form */
+
 .signBtn{
     border: none;
     background-color: inherit;
@@ -314,6 +320,9 @@
     text-align: start;
     color: rgb(68, 68, 68);
 }
+
+/* Home Page Bottom Search */
+
 .bottomSearch{
     width: 100%;
     height: 30vh;
@@ -354,6 +363,9 @@
 .formBtn:hover{
     background-color: rgb(230, 171, 44);
 }
+
+/* Footer */
+
 .footer{
     position: relative;
     width: 100%;
@@ -449,6 +461,9 @@
     align-items: center;
     cursor: pointer;
 }
+
+/* Searched */
+
 .searchBar{
     width: 100%;
     height: fit-content;
@@ -524,6 +539,14 @@
     font-family: 'Josefin Sans', sans-serif;
     color: #77E2E1;
 }
+.resultContainer{
+    width: 100%;
+    min-height: 40vh;
+    height: max-content;
+}
+
+/* Saved Pages */
+
 .saveHeader{
     position: relative;
     width: 100%;
@@ -649,6 +672,29 @@
 .cardLink-add:hover{
     text-decoration: underline;
 }
+.svdDynamicCard{
+    width: 13em;
+    height: 20em;
+    background-color: white;
+    padding-bottom: 15px;
+    margin: 0.5em;
+    border-bottom: 3px solid aqua;
+}
+.dynamicCardContent{
+    width: 100%;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.dynamicCardContent img{
+    width: 11em;
+}
+.dynamicCardContent h3{
+    font-family: 'Josefin Sans', sans-serif;
+    color: #892074;
+}
 .svdFixedCard-Board{
     margin: 0.5em;
     width: 13em;
@@ -658,44 +704,9 @@
     align-items: center;
     justify-content: center;
 }
-.signBox{
-    margin: 25px auto;
-    width: 16em;
-    height: 6em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5em;
-}
-.signBtn-save{
-    width: 11em;
-    height: 3em;
-    background-color: #77E2E1;
-    border: none;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.1em;
-    font-weight: 800;
-    cursor: pointer;
-}
-.signBtn-save:hover{
-    background-color: #892074;
-}
-.signBox p{
-    font-family: 'Josefin Sans', sans-serif;
-}
-.logBtn-save{
-    border: none;
-    background-color: inherit;
-    color: #892074;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 900;
-    cursor: pointer;
-}
-.logBtn-save:hover{
-    text-decoration: underline;
-}
+
+/* Profile */
+
 .profileHeader{
     margin-top: 1.2em;
     width: 100%;
@@ -753,6 +764,9 @@
     min-height: 60vh;
     background-color: white;
 }
+
+/* I Want to Make Search */
+
 #i-want-to-make{
     background: linear-gradient(to right, #ff0099, #493240);
     display: flex;
@@ -812,6 +826,9 @@
     color: black;
     font-weight: 900;
 }
+
+/* All Categories */
+
 #all-categories{
     display: flex;
     justify-content: center;
@@ -869,6 +886,9 @@
     color: purple;
     font-weight: 900;
 }
+
+/* CategoryLoader */
+
 .recipeHeader{
     display: flex;
     flex-direction: column;
@@ -886,18 +906,6 @@
     width: 75%;
     margin: auto;
     font-family: 'Josefin Sans', sans-serif;
-}
-.recipesContainer{
-    margin: auto;
-    width: 70%;
-    height: max-content;
-    padding-top: 1.5em;
-    padding-bottom: 1.5em;
-    border: 1px solid blue;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5em;
 }
 .category-iconBox{
     width: 20%;
@@ -927,25 +935,557 @@
 .mlIcon{
     color: rgb(189, 166, 39);
 }
+.recipesContainer{
+    margin: auto;
+    width: 70%;
+    height: max-content;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5em;
+}
 .recipeCard{
+    position: relative;
     width: 80%;
     height: max-content;
     font-family: 'Josefin Sans', sans-serif;
 }
 .cardText{
+    position: relative;
+    top: -4em;
+    left: 5em;
     padding: 1.5em;
-    width: 75%;
+    width: 85%;
     background-color: white;
-    border-bottom: 2px solid aquamarine;
-    z-index: 20;
+    border-bottom: 4px solid rgb(95, 250, 198);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2em;
+    z-index: 2;
 }
 .cardImage{
+    width: 45em;
+    height: 26em;
+}
+
+/* AboutUs */
+
+#about-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+    margin-bottom: 5rem;
+    padding-top: 2em;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: white;
+}
+#about-page-container{
+    width: 72%;
+    text-align: left;
+    line-height: 1.6rem;
+}
+#about-page-container h2{
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 3rem;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.1rem;
+}
+#about-page-food-logo-by-team-food{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+#about-page-food-logo-by-team-food-left-part{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#about-page-food-logo-left-part{
+    width: 4rem;
+    height: 4rem;
+    background: linear-gradient(to bottom, #ff0099, #493240);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#about-page-food-logo-left-part h3{
+    font-family: 'Racing Sans One', cursive;
+    color: white;
+}
+#about-page-food-logo-left-part span{
+    color: rgb(244, 207, 53);
+}
+#about-page-by-team-food-left-part{
+    margin-left: 0.7rem;
+}
+#about-page-by-team-food-left-part p{
+    font-weight: 900;
+}
+#about-page-by-team-food-left-part span{
+    color: purple;
+    cursor: pointer;
+}
+#about-page-by-team-food-left-part span:hover{
+    border-bottom: 1px solid purple;
+}
+#about-page-food-logo-by-team-food-right-part{
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+#about-page-food-logo-by-team-food-right-part img:hover{
+    filter: saturate(3);
+}
+#about-page-description p{
+    margin-top: 1rem;
+    color: black;
+}
+#about-page-description p:nth-child(2),#about-page-description p:nth-child(4){
+    margin-bottom: 1rem;
+}
+#about-page-description span{
+    font-weight: 900;
+}
+#about-page-description p span{
+    color: purple;
+    cursor: pointer;
+}
+#about-page-description p span:hover{
+    border-bottom: 1px solid purple;
+}
+#about-page-about-team-food{
+    width: 66%;
+    margin-top: 3rem;
+}
+#about-page-about-team-food h3{
+    margin-bottom: 0.6rem;
+}
+#about-page-about-team-food hr{
+    border: 1px dotted black;
+}
+#about-page-about-team-food-logo-and-description{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+#about-page-about-team-food-logo{
+    height: 7rem;
+    width: 7rem;
+    background: linear-gradient(to bottom, #ff0099, #493240);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#about-page-about-team-food-logo h3{
+    font-family: 'Racing Sans One', cursive;
+    color: white;
+    font-size: 2rem;
+}
+#about-page-about-team-food-logo span{
+    color: rgb(244, 207, 53);
+}
+#about-page-about-team-food-logo-and-description p{
+    margin-left: 1.5rem;
+}
+
+/* Site Map Page */
+
+#site-map-heading {
+    font-size: 3rem;
+    font-family: 'Anton', sans-serif;
+    margin-top: 2rem;
+    margin-left: 8.3rem;
+}
+#site-map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+#site-map-container {
     width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+#site-map-container div {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+}
+#site-map-container h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+#site-map-container div a {
+    text-decoration: none;
+    font-weight: 900;
+    color: rgb(90, 6, 90);
+    border-bottom: 2px dotted purple;
+    margin-bottom: 1rem;
+}
+
+/* Home Page */
+
+#home-page{
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+    background-color: white;
+    font-family: 'Josefin Sans', sans-serif;
+}
+#home-page img{
+    filter: brightness(70%) contrast(120%);
+}
+#home-page-container{
+    width: 90%;
+}
+#home-page-banner-image1-container{
+    width: 100%;
+    height: 39.7rem;
+    margin-bottom: 2rem;
+}
+#home-page-banner-image1{
+    width: 100%;
+    height: 39.7rem;
+    position: relative;
+    filter: contrast(125%) brightness(65%);
+}
+#home-page-banner-image1-text-and-button{
+    position: absolute;
+    top: 23rem;
+    left: 11rem;
+}
+#home-page-banner-image1-text-and-button h2{
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+#home-page-banner-image1-text-and-button button{
+    width: 12rem;
+    height: 3.3rem;
+    background-color: #f5ce35;
+    border-radius: 0.3rem;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 900;
+    cursor: pointer;
+}
+#home-page-container hr{
+    height: 2rem;
+    background-color: rgb(240, 240, 240);
+    border: none;
+    margin-bottom: 2rem;
+}
+#home-page-fresh-from-our-community h2{
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+}
+#home-page-fresh-from-our-community-cards-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.home-page-fresh-from-our-community-cards{
+    width: 22rem;
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 0.2rem;
+    padding: 1rem;
+}
+.home-page-fresh-from-our-community-cards-image-text{
+    display: flex;
+    gap: 1rem;
+}
+#home-page-fresh-from-our-community-cards-container img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+.home-page-fresh-from-our-community-cards-image-text{
+    line-height: 1.5rem;
+    margin-bottom: 2rem;
+}
+.home-page-fresh-from-our-community-cards-time-reply{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.home-page-fresh-from-our-community-cards-time-reply p{
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgb(78, 78, 78);
+}
+.home-page-fresh-from-our-community-cards-review{
+    margin-bottom: 15rem;
+    color: rgb(66, 66, 66);
+    font-weight: 500;
+}
+#home-page-fresh-from-our-community-cards-container img:nth-child(2) {
+    width: 17rem;
+    height: 17rem;
+    border-radius: 0.2rem;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+.home-page-fresh-from-our-community-cards-time-reply-heart{
+    color: rgb(139, 0, 0);
+    padding-top: 0.1rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+#home-page-what-were-craving h2{
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+}
+#home-page-what-were-craving-container{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 3rem;
+}
+.home-page-what-were-craving-image-container{
+    width: 22rem;
+    height: 22rem;
+    cursor: pointer;
+}
+#home-page-what-were-craving-container img{
+    width: 22rem;
+    height: 22rem;
+    position: relative;
+}
+.home-page-what-were-craving-image-text{
+    position: absolute;
+    top: 10rem;
+}
+#home-page-what-were-craving-container h5{
+    position: absolute;
+    top: 15.5rem;
+    margin-left: 1rem;
+    font-weight: 900;
+    color: white;
+}
+#home-page-what-were-craving-container h3{
+    position: absolute;
+    top: 17rem;
+    margin-left: 1rem;
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: white;
+}
+#home-page-explore-more h2{
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+}
+#home-page-explore-more-container{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+#home-page-explore-more-container img{
+    width: 10rem;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+#home-page-trending-now h2{
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+}
+#home-page-trending-now-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+#home-page-trending-now-container img{
+    width: 16.9rem;
+    margin-bottom: 1rem;
+}
+#home-page-trending-now-container div{
+    width: 17rem;
+    text-align: center;
+    padding-bottom: 1rem;
+    border: 1px solid gainsboro;
+    border-radius: 0.2rem;
+}
+#home-page-dont-miss h2{
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+}
+#home-page-dont-miss-container{
+    display: flex;
+    justify-content: space-between;
+    position: relative
+}
+#home-page-dont-miss-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.home-page-dont-miss-image-container{
+    width: 22rem;
+    height: 22rem;
+    cursor: pointer;
+}
+#home-page-dont-miss-container img{
+    width: 22rem;
+    height: 22rem;
+    filter: contrast(125%) brightness(65%);
+}
+#home-page-dont-miss-container h5{
+    position: absolute;
+    top: 15.5rem;
+    color: white;
+    margin-left: 1rem;
+}
+#home-page-dont-miss-container h3{
+    position: absolute;
+    top: 17rem;
+    color: white;
+    margin-left: 1rem;
+    font-size: 1.7rem;
+    font-weight: 900;
+}
+#home-page-more-ideas h2{
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+}
+#home-page-more-ideas-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+#home-page-more-ideas-container img{
+    width: 16.9rem;
+    margin-bottom: 1rem;
+}
+#home-page-more-ideas-container div{
+    width: 17rem;
+    text-align: center;
+    padding-bottom: 1rem;
+    border: 1px solid gainsboro;
+    border-radius: 0.2rem;
+}
+#home-page-banner-image2-container{
+    display: flex;
+    gap: 4rem;
+    border: 1px solid rgb(240,240,240);
+    border-radius: 0.2rem;
+    margin-bottom: 2rem;
+}
+#home-page-banner-image2-container img{
+    width: 45rem;
+}
+#home-page-banner-image2-container h5{
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+}
+#home-page-banner-image2-container h3{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+#home-page-fan-favourites h2{
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+}
+#home-page-fan-favourites-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#home-page-fan-favourites-container img{
+    width: 16.9rem;
+    margin-bottom: 1rem;
+}
+#home-page-fan-favourites-container div{
+    width: 17rem;
+    text-align: center;
+    padding-bottom: 1rem;
+    border: 1px solid gainsboro;
+    border-radius: 0.2rem;
+    margin-bottom: 2rem;
+}
+
+/* Display Page */
+
+.displayHeader{
+    width: 100%;
+    height: 3em;
+    background-color: #f5ce35;
+    margin-bottom: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.display-container{
+    width: 100%;
+    height: max-content;
+    background-color: white;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.display-contentBox{
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+}
+.display-contentBox h1{
+    font-size: 3em;
+}
+.display-contentBox img{
+    width: 65%;
     height: 45vh;
+}
+.display-contentBox p{
+    max-width: 70%;
+}
+.display-Iconbox{
+    width: 65%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.displayIcon{
+    width: 30px;
+    height: 30px;
+}
+.displayBtn{
+    border: none;
+    width: 70px;
+    height: 45px;
+    background-color: rgb(218, 204, 186);
+    cursor: pointer;
+}
+.camera{
+    width: 180px;
+    height: 40px;
+    background-color: #f5ce35;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1em;
+    font-weight: bold;
+}
+.camera:hover{
+    background-color: #b9a75d;
 }
 
 
 @media only screen and (max-width:500px) {
+    #navBar{
+        display: none;
+    }
     .userDetailsBox{
         flex-direction: column;
         align-items: flex-start;
@@ -963,5 +1503,22 @@
         width: 100%;
         height: 0;
         border-bottom: 1px dashed black;
+    }
+
+    /* CategoryLoader */
+
+    .recipesContainer{
+        width: 100%;
+    }
+    .recipeCard{
+        width: 100%;
+    }
+    .cardImage{
+        width: 100%;
+        height: 40vh;
+    }
+    .cardText{
+        width: 90%;
+        left: 5%;
     }
 }

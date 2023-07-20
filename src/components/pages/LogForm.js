@@ -4,7 +4,7 @@ import { BiErrorCircle } from 'react-icons/bi';
 import { FcGoogle } from 'react-icons/fc';
 import { BsFacebook } from 'react-icons/bs';
 import { SiApple } from 'react-icons/si';
-
+import axios from 'axios';
 const LogForm = ({hideLog, showSign, clearBlur}) => {
   const closeForm =()=>{
     hideLog(false);
@@ -31,18 +31,24 @@ const LogForm = ({hideLog, showSign, clearBlur}) => {
       e.preventDefault();
       setFormErrors(validate(formData));
       setRegistered(true);
+      clearBlur(false);
   }
   useEffect(()=>{
       if(Object.keys(formErrors).length === 0 && registered){
-          // axios.post("http://localhost:8000/api/user/register", formData)
-          // .then((response)=>{
-          //     alert(response.data.message);
-          //     navigate('/login');
-          // })
-          // .catch((error)=>console.log(error.message))
-          console.log(formData);
+        axios.post("https://food-server-e6lk.onrender.com/api/user/login", formData)
+        .then((response)=>{
+            alert(response.data.message);
+            const receivedToken = response.data.token;
+            const receivedName = response.data.userName;
+            if(receivedName && receivedToken){
+              sessionStorage.setItem('token', receivedToken);
+              sessionStorage.setItem('name', receivedName);
+            }
+            return hideLog(false);
+        })
+        .catch((error)=>console.log(error.message))
       }
-  })
+  },[formData, formErrors, registered, hideLog])
   const mailformat = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
   const validate = (data)=>{
       const errors = {};

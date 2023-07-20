@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios';
 import { SiPinterest, SiFacebook } from 'react-icons/si'
 import { ImMail4 } from 'react-icons/im'
+import SimpleBackdrop from './mainComponents/Backdrop';
+import IWantToMakeSearch from './mainComponents/IWantToMakeSearch';
 
 const CategoryLoader = () => {
   const [data, setData] = useState();
@@ -27,16 +29,17 @@ const CategoryLoader = () => {
     {data ? data.map((item, index)=>{
       return(
       <div key={index} className='recipeCard'>
-        <img src={item.recipe.image} alt='kuch bhi' className='cardImage'/>
+        <Link to={`/display/${item.recipe.label}`}><img src={item.recipe.image} alt='kuch bhi' className='cardImage'/></Link>
         <div className='cardText'>
           <h5>RECIPE</h5>
           <h2>{item.recipe.label}</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt consectetur adipiscing elit, sed do eiusmod tempor incididunt consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
         </div>
       </div>
       )
-    }) : <h2>Loading....</h2>}
+    }) : <SimpleBackdrop/>}
     </div>
+    <IWantToMakeSearch/>
     </>
   )
 }

@@ -20,9 +20,9 @@ const Footer = () => {
         </div>
         <div className='linkBox'>
           <Link className='footer-links' to='/allcategories'>All Categories</Link>
-          <Link className='footer-links'>Site Map</Link>
-          <Link className='footer-links'>About Us</Link>
-          <Link className='footer-links'>Help</Link>
+          <Link className='footer-links' to='/sitemap'>Site Map</Link>
+          <Link className='footer-links' to='/about'>About Us</Link>
+          <a className='footer-links' href='https://help.food.com/hc/en-us' target='blank'>Help</a>
         </div>
       </div>
       <div className='footer-right'>
@@ -41,7 +41,7 @@ const Footer = () => {
           <button className='footerBtn'>Do Not Sell or Share My Personal Information</button>
         </div>
       </div>
-      <button className='bcTopBtn'>Back to Top <BiUpArrowAlt style={{width:'23px', height:'23px'}}/></button>
+      <button className='bcTopBtn' onClick={()=>window.scrollTo({top:0, behavior:'smooth'})}>Back to Top <BiUpArrowAlt style={{width:'23px', height:'23px'}}/></button>
     </div>
   )
 }
